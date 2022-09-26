@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-rest-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev" :"nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ericawanja/nodejs-Rest-Api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ericawanja/nodejs-Rest-Api/issues"
+  },
+  "homepage": "https://github.com/Ericawanja/nodejs-Rest-Api#readme",
+  "devDependencies": {
+    "i": "^0.3.7",
+    "nodemon": "^2.0.20"
+  }
+}
