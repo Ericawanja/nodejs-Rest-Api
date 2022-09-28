@@ -1,20 +1,27 @@
 const http = require("http");
-const {getProducts} = require ('./controllers/ProductControllers')
-const {getProduct} = require ('./controllers/ProductControllers')
+const {
+  getProducts,
+  getProduct,
+  createProduct,
+} = require("./controllers/ProductControllers");
 
-const server = http.createServer((req, res)=>{
-  if(req.url ==='/api/products' && req.method === 'GET'){
-    getProducts(req,res)
-  }else if( req.url.match(/\api\/products\/([0-9]+)/) && req.method === 'GET'){
-    const id = req.url.split('/')[3];
-    console.log(id)
-    getProduct(req, res, id)
-  } 
-   else{
-    res.writeHead(404, {'Content-Type': 'application/json '})
-    res.end(JSON.stringify({message:'Route Not Found'}))
-  } 
-})
-const Port = process.env.Port || 5000
+const server = http.createServer((req, res) => {
+  if (req.url === "/api/products" && req.method === "GET") {
+    getProducts(req, res);
+  } else if (
+    req.url.match(/\api\/products\/([0-9]+)/) &&
+    req.method === "GET"
+  ) {
+    const id = req.url.split("/")[3];
+    console.log(id);
+    getProduct(req, res, id);
+  } else if (req.url === "/api/products" && req.method === "POST") {
+    createProduct(req, res);
+  } else {
+    res.writeHead(404, { "Content-Type": "application/json " });
+    res.end(JSON.stringify({ message: "Route Not Found" }));
+  }
+});
+const Port = process.env.Port || 5000;
 
-server.listen(Port, ()=>console.log(`server running port ${Port}`))
+server.listen(Port, () => console.log(`server running port ${Port}`));
